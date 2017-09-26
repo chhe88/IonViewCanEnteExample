@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Observable} from "rxjs";
+import {NextPage} from "../next/next";
 
 @Component({
   selector: 'page-home',
@@ -7,8 +9,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  nextPage = NextPage;
 
+  constructor(public navCtrl: NavController) {
+  }
+
+  ionViewCanEnter(): Promise<boolean> {
+    return Observable.of(true).delay(5000).toPromise();
   }
 
 }
